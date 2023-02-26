@@ -46,6 +46,8 @@ tags:
 方法：使用数据库中的set集合去重判断当前url是否爬取过。使用sismember()方法在请求之前判断是否已经存在集合set中，，如果存在直接跳转到下一个url判断，否则请求此网页。这里需要注意当前判断并没有添加url到redis中，需要请求之后将刚请求到数据url添加到redis中。
 
 \```
+
+	#代码
 	def parse(self, response):
         print(response)
         #print(response.text)
@@ -62,7 +64,7 @@ tags:
                     method = "get",
                     callback = self.parse_detail
                     )
-        
+
         #分页操作
         next_page = response.xpath('//div[@class="short-pages-2 clearfix"]/div[1]/a[2]/@href').extract_first()
         if next_page:
