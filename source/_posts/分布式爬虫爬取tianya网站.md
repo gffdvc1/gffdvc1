@@ -78,6 +78,7 @@ tags:
 2) 解析内容之后，判断该内容是否被爬取过，在详情页的解析之后判断内容是否存在与数据库中，使用sismember()方法，代码如下：
 
 \```
+
 	def parse_detail(self,response):
         title = response.xpath('//span[@class="s_title"]/span/text()').extract_first()
         content = response.xpath('//div[@class="atl-content"]/div[2]/div/text()').extract_first()
